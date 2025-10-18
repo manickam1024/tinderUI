@@ -2,7 +2,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm flex justify-between">
       <div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">DevTinder</a>
       </div>
 
       {/* icon+search div */}
@@ -10,14 +10,14 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search"
-          className="input input-bordered w-24 md:w-auto"
+          className="input input-bordered w-24 md:w-auto relative right-12"
         />
-        <div className="dropdown dropdown-end">
+        <div className="dropdown dropdown-end right-5">
           {/* icon */}
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle avatar"
+            className="btn btn-ghost btn-circle avatar "
           >
             <div className="w-10 rounded-full">
               <img

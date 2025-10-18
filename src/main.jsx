@@ -29,6 +29,8 @@ const Router = () => {
           {/* other pages */}
           <Route path="feed" element={<Feed />} />
           <Route path="connections" element={<Connections />} />
+          {/* unknown routes */}
+          <Route path="*" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
