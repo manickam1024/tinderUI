@@ -1,17 +1,22 @@
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
+  const value = useSelector((state) => state.authentication.username);
+
   return (
     <div className="navbar bg-base-100 shadow-sm flex justify-between">
       <div>
         <a className="btn btn-ghost text-xl">DevTinder</a>
       </div>
 
-      {/* icon+search div */}
+      {/* search div +icon */}
       <div>
         <input
           type="text"
           placeholder="Search"
           className="input input-bordered w-24 md:w-auto relative right-12"
         />
+
         <div className="dropdown dropdown-end right-5">
           {/* icon */}
           <div
@@ -45,6 +50,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+        <div className="">{value}</div>
       </div>
     </div>
   );

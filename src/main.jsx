@@ -6,15 +6,17 @@ import Login from "./components/login.jsx";
 import Feed from "./components/Feed.jsx";
 import Connections from "./components/Connections.jsx";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
 
 // App layout
 const App = () => {
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Outlet />
       <Footer />
-    </>
+    </Provider>
   );
 };
 
