@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addcredentials } from "../redux/slice";
+import { adduserdata } from "../redux/slice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, useusername] = useState("");
   const [password, usepassword] = useState("");
   const dispatch = useDispatch();
+  const naviagate = useNavigate();
 
-  async function login(e, p) {
+  async function login() {
     try {
       const raw = await axios.post(
         "http://localhost:4444/auth/login",
@@ -20,11 +22,12 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      const result = await JSON.stringify(raw);
+      const result = raw.data;
 
       if (result) {
         alert("sucessfully logged in ");
-        dispatch(addcredentials({ username: email }));
+        dispatch(adduserdata(result));
+        naviagate("/feed");
       }
     } catch (err) {
       alert("incorrect username or password \n" + err);

@@ -29,8 +29,8 @@ const Router = () => {
           {/* index route for default page */}
           <Route path="/" element={<Login />} />
           {/* other pages */}
-          <Route path="feed" element={<Feed />} />
-          <Route path="connections" element={<Connections />} />
+          <Route path="/feed" element={<Feed />} />
+          <Route path="/connections" element={<Connections />} />
           {/* unknown routes */}
           <Route path="*" element={<Login />} />
         </Route>
