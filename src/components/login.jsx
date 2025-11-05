@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { adduserdata } from "../redux/slice";
+import { adduserdata, toggle } from "../redux/slice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../constants/Urls";
 
@@ -9,7 +9,7 @@ const Login = () => {
   const [email, useusername] = useState("");
   const [password, usepassword] = useState("");
   const dispatch = useDispatch();
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
 
   async function login() {
     try {
@@ -28,7 +28,7 @@ const Login = () => {
       if (result) {
         alert("sucessfully logged in ");
         dispatch(adduserdata(result));
-        naviagate("/feed");
+        navigate("/feed", { replace: true });
       }
     } catch (err) {
       alert("incorrect username or password \n" + err);

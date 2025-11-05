@@ -6,17 +6,20 @@ import Login from "./components/login.jsx";
 import Feed from "./components/Feed.jsx";
 import Connections from "./components/Connections.jsx";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./redux/store.js";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { adduserdata } from "./redux/slice.js";
 import { BASE_URL } from "./constants/Urls.js";
+import { useNavigate } from "react-router-dom";
 // App layout
+
 const App = () => {
+  // whenever i referesh the page the store is also refreshed and navbar is empty soo i added this'
   const dispatch = useDispatch();
-  // whenever i referesh the page the store is also refreshed and navbar is empty soo i added this
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -33,9 +36,8 @@ const App = () => {
         console.log("Something went wrong while fetching user profile:", err);
       }
     };
-
     fetchProfile();
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
