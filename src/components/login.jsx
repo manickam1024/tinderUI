@@ -28,7 +28,7 @@ const Login = () => {
       if (result) {
         alert("sucessfully logged in ");
         dispatch(adduserdata(result));
-        navigate("/feed", { replace: true });
+        navigate("/feed", { replace: true }); // here replace true enables us to clear the history of login page form the stack by replace it with the feed page added this to the git commit
       }
     } catch (err) {
       alert("incorrect username or password \n" + err);
