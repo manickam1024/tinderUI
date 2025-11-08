@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../constants/Urls";
-import { useNavigate } from "react-router-dom";
+import { replace, useNavigate } from "react-router-dom";
 import { adduserdata } from "../redux/slice";
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
     });
     console.log(res.data);
     dispatch(adduserdata(""));
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
   return (
     <div className="navbar bg-base-100 shadow-sm flex justify-between">

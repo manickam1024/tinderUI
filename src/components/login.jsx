@@ -8,6 +8,7 @@ import { BASE_URL } from "../constants/Urls";
 const Login = () => {
   const [email, useusername] = useState("");
   const [password, usepassword] = useState("");
+  const [error, seterror] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,7 +32,8 @@ const Login = () => {
         navigate("/feed", { replace: true }); // here replace true enables us to clear the history of login page form the stack by replace it with the feed page added this to the git commit
       }
     } catch (err) {
-      alert("incorrect username or password \n" + err);
+      console.log("incorrect username or password \n" + err);
+      seterror(err.response.data);
     }
   }
 
@@ -48,6 +50,7 @@ const Login = () => {
             placeholder="Email"
             value={email}
             onChange={(c) => useusername(c.target.value)}
+            required
           />
 
           <label className="label">Password</label>
@@ -57,7 +60,10 @@ const Login = () => {
             placeholder="Password"
             value={password}
             onChange={(c) => usepassword(c.target.value)}
+            required
+            minLength={10}
           />
+          <div className="error text-error text-sm">{error}</div>
 
           <button className="btn btn-neutral mt-4">Login</button>
         </fieldset>
